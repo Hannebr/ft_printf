@@ -6,7 +6,7 @@
 #    By: hbrouwer <hbrouwer@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/19 16:08:13 by hbrouwer      #+#    #+#                  #
-#    Updated: 2022/10/19 16:58:35 by hbrouwer      ########   odam.nl          #
+#    Updated: 2022/10/24 16:45:56 by hbrouwer      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FLAGS = -Wall -Werror -Wextra
 
 ARFLAGS = -crs
 
-SRC = 
+SRC = ft_printf.c char_functions.c dec_functions.c hex_functions.c util.c
 
 OBJ = $(SRC:.c=.o)
 
