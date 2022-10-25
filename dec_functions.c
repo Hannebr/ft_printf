@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 14:55:42 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/24 16:22:20 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/25 10:55:19 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int	ft_printunsigned(va_list ptr)
 
 	num = va_arg(ptr, unsigned int);
 	print_base("0123456789", 10, num);
+	if (num == 0)
+		return (1);
 	return (num_len(num, 10));
 }

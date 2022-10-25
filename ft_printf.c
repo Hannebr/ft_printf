@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 17:13:41 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/24 17:20:28 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/25 12:18:08 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,25 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 
-static int	(**function_array)(va_list arg);
-
-static void	init_function_array(void)
-{
-	function_array = (int (**)(va_list)) malloc(9 * sizeof(int (*)(va_list)));
-	function_array['c'] = ft_printchar;
-	function_array['s'] = ft_printstr;
-	function_array['p'] = ft_printptr;
-	function_array['d'] = ft_printdec;
-	function_array['i'] = ft_printint;
-	function_array['u'] = ft_printunsigned;
-	function_array['x'] = ft_printhexlow;
-	function_array['X'] = ft_printhexup;
-	function_array['%'] = ft_printperc;
-}
+static int	(*g_function_array[])(va_list arg) = {
+['c'] = ft_printchar,
+['s'] = ft_printstr,
+['p'] = ft_printptr,
+['d'] = ft_printdec,
+['i'] = ft_printint,
+['u'] = ft_printunsigned,
+['x'] = ft_printhexlow,
+['X'] = ft_printhexup,
+['%'] = ft_printperc
+};
 
 int	ft_printf(const char *str, ...)
 {
 	unsigned int	i;
 	va_list			ptr;
 	int				length;
+	int				res;
 
-	init_function_array();
 	va_start(ptr, str);
 	i = 0;
 	length = 0;
@@ -46,16 +42,17 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			length += function_array[(int)str[i]](ptr);
+			length += g_function_array[(int)str[i]](ptr);
 		}
 		else
 		{
-			write(1, &str[i], 1);
+			res = write(1, &str[i], 1);
+			if (res == -1)
+				return (res);
 			length++;
 		}
 		i++;
 	}
-	free(function_array);
 	return (length);
 }
 
@@ -63,8 +60,8 @@ int	ft_printf(const char *str, ...)
 
 // int	main(void)
 // {
-// 	int res1 = ft_printf("does %c %s with %X?\n",'x',"work", 32759);
-// 	int res2 = printf("does %c %s with %X?\n", 'x', "work", 32759);
+// 	int res1 = ft_printf("%%%\n");
+// 	int res2 = printf("%%%\n");
 
 // 	printf("my printf = %d,		original = %d\n", res1, res2);
 // }

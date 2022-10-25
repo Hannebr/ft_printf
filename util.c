@@ -6,13 +6,13 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/21 18:05:44 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/24 16:21:10 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/25 12:02:06 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print_base(char *baseset, int base, unsigned int num)
+void	print_base(char *baseset, int base, unsigned long num)
 {
 	char	c;
 
@@ -46,7 +46,7 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-int	num_len(unsigned int n, int base)
+int	num_len(unsigned long n, int base)
 {
 	int	length;
 
