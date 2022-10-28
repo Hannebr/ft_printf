@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 13:11:16 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/25 12:02:17 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/25 17:06:05 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	ft_printstr(va_list ptr)
 	str = va_arg(ptr, char *);
 	if (str == NULL)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		length = write(1, "(null)", 6);
+		return (length);
 	}
 	length = write(1, str, ft_strlen(str));
 	return (length);

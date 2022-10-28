@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 15:05:59 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/25 10:19:56 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/25 17:00:05 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void			print_base(char *baseset, int base, unsigned long n);
 unsigned int	print_negative(int n);
 int				ft_strlen(const char *s);
 int				num_len(unsigned long n, int base);
+int				ft_strchr(const char *s, int c);
 
 #endif

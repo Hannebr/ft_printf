@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 17:13:41 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/25 12:18:08 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/28 11:40:32 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,39 +29,36 @@ static int	(*g_function_array[])(va_list arg) = {
 
 int	ft_printf(const char *str, ...)
 {
-	unsigned int	i;
-	va_list			ptr;
-	int				length;
-	int				res;
+	int			i;
+	int			len;
+	va_list		ptr;
 
 	va_start(ptr, str);
 	i = 0;
-	length = 0;
+	len = 0;
 	while (str[i])
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' && ft_strchr("cspdiuxX%", str[i + 1]))
 		{
 			i++;
-			length += g_function_array[(int)str[i]](ptr);
+			len += g_function_array[(int)str[i]](ptr);
 		}
-		else
+		else if (str[i] != '%')
 		{
-			res = write(1, &str[i], 1);
-			if (res == -1)
-				return (res);
-			length++;
+			write(1, &str[i], 1);
+			len++;
 		}
 		i++;
 	}
-	return (length);
+	return (len);
 }
 
 // #include <stdio.h>
 
 // int	main(void)
 // {
-// 	int res1 = ft_printf("%%%\n");
-// 	int res2 = printf("%%%\n");
+// 	int res1 = ft_printf("Does %c %s with %d (%X)\n", 'x', NULL, 42424, 42424);
+// 	int res2 = printf("Does %c %s with %d (%X)\n", 'x', NULL, 42424, 42424);
 
-// 	printf("my printf = %d,		original = %d\n", res1, res2);
+// 	printf("\nmy result = %d		original = %d\n", res1, res2);
 // }

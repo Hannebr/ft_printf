@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/21 18:05:44 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/25 12:02:06 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/25 16:22:23 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ int	num_len(unsigned long n, int base)
 		length++;
 	}
 	return (length);
+}
+
+int	ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (*(s + i))
+	{
+		if (*(s + i) == (char)c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 // int main(void)
