@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 17:13:41 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/28 12:10:09 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/28 13:26:15 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,13 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-// #include <stdio.h>
-
-// int	main(void)
+// int main(void)
 // {
-// 	int res1 = ft_printf("Does %c %s with %d (%X)\n", 'x', NULL, 42424, 42424);
-// 	int res2 = printf("Does %c %s with %d (%X)\n", 'x', NULL, 42424, 42424);
-// 	int res1 = ft_printf("hello %");
-// 	int res2 = printf("hello %");
-
-// 	printf("\nmy result = %d		original = %d\n", res1, res2);
+//   int printed_chars = 0;
+//   int my_printed_chars = 0;
+//   printed_chars = printf("printing non-existing format specifier: %l with system printf\n");
+//   my_printed_chars = ft_printf("printing non-existing format specifier: %l with my ft_printf \n");
+//   printf("\n(number of printed chars with system printf: %i)\n", printed_chars);
+//   printf("(number of printed chars with my ft_printf:  %d)\n", my_printed_chars);
+//   return (0);
 // }
