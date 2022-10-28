@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 17:13:41 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/28 11:40:32 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/28 12:10:09 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ int	ft_printf(const char *str, ...)
 	len = 0;
 	while (str[i])
 	{
-		if (str[i] == '%' && ft_strchr("cspdiuxX%", str[i + 1]))
+		if (str[i] == '%' && str[i + 1])
 		{
+			if (ft_strchr("cspdiuxX%", str[i + 1]))
+				len += g_function_array[(int)str[i + 1]](ptr);
 			i++;
-			len += g_function_array[(int)str[i]](ptr);
 		}
 		else if (str[i] != '%')
 		{
@@ -59,6 +60,8 @@ int	ft_printf(const char *str, ...)
 // {
 // 	int res1 = ft_printf("Does %c %s with %d (%X)\n", 'x', NULL, 42424, 42424);
 // 	int res2 = printf("Does %c %s with %d (%X)\n", 'x', NULL, 42424, 42424);
+// 	int res1 = ft_printf("hello %");
+// 	int res2 = printf("hello %");
 
 // 	printf("\nmy result = %d		original = %d\n", res1, res2);
 // }
