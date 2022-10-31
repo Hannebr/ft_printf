@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 17:13:41 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/28 13:26:15 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/31 18:12:42 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,26 @@ int	ft_printf(const char *str, ...)
 	len = 0;
 	while (str[i])
 	{
-		if (str[i] == '%' && str[i + 1])
+		if (str[i] == '%' && ft_strchr("cspdiuxX%", str[i + 1]))
 		{
-			if (ft_strchr("cspdiuxX%", str[i + 1]))
-				len += g_function_array[(int)str[i + 1]](ptr);
+			len += g_function_array[(int)str[i + 1]](ptr);
 			i++;
 		}
 		else if (str[i] != '%')
-		{
-			write(1, &str[i], 1);
-			len++;
-		}
+			len += write(1, &str[i], 1);
 		i++;
 	}
 	return (len);
 }
 
+// #include <stdio.h>
+
 // int main(void)
 // {
-//   int printed_chars = 0;
-//   int my_printed_chars = 0;
-//   printed_chars = printf("printing non-existing format specifier: %l with system printf\n");
-//   my_printed_chars = ft_printf("printing non-existing format specifier: %l with my ft_printf \n");
-//   printf("\n(number of printed chars with system printf: %i)\n", printed_chars);
-//   printf("(number of printed chars with my ft_printf:  %d)\n", my_printed_chars);
-//   return (0);
+// 	int res1 = ft_printf("hello %%%");
+// 	printf("\n");
+// 	int res2 = printf("hello %%%");
+// 	printf("\n");
+
+// 	printf("original: %d		mine: %d\n", res2, res1);
 // }
